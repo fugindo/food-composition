@@ -7,13 +7,18 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-
-import 'package:food_composition/main.dart';
+import 'package:food_api_client/food_api_client.dart';
+import 'package:food_composition/app/app.dart';
+import 'package:repository/repository.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+    final apiClient = FoodApiClient();
+    final foodRepository = FoodRespository(foodApiClient: apiClient);
+    await tester.pumpWidget(App(
+      foodRespository: foodRepository,
+    ));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);
