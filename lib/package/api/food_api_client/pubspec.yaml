@@ -1,4 +1,4 @@
-name: repository
+name: food_api_client
 description: A new Flutter package project.
 version: 0.0.1
 publish_to: none
@@ -10,8 +10,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  food_api_client:
-    path: ../api/food_api_client
+  food_api:
+    path: ../food_api
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
@@ -23,4 +24,3 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
