@@ -5,6 +5,7 @@ void main() {
   test('adds one to input values', () async {
     final data = FoodApiClient();
 
-    var result = await data.listFood();
+    var result = await data.mealsDetails(id: 53014);
+    print('INI YANG MANA>> $result');
   });
 }
