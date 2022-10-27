@@ -26,10 +26,11 @@ class FoodApiClient implements FoodApi {
       Response response = await Dio().getUri(Uri.parse(
           'https://www.themealdb.com/api/json/v1/1/lookup.php?i=$id'));
       var data = response.data;
-
+      print(data);
       var map = Map<String, dynamic>.from(data);
 
       var result = Meals.fromJson(map);
+      print(result);
       return result;
     } on DioError catch (e) {
       throw Exception(e.toString());

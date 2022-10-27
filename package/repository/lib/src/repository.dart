@@ -50,7 +50,7 @@ class FoodRespository implements Exception {
   }
 
   /// Meals details from api
-  Future<Meals?> mealsDetails({required int id}) async {
+  Future<Meals?> mealsDetails({required int? id}) async {
     try {
       return await _foodApiClient.mealsDetails(id: id);
     } catch (e) {

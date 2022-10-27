@@ -1,4 +1,9 @@
 part of 'home_details_bloc.dart';
 
-@immutable
-abstract class HomeDetailsEvent {}
+class HomeDetailsEventData extends Equatable {
+  const HomeDetailsEventData({this.id});
+  final int? id;
+  @override
+  // TODO: implement props
+  List<Object?> get props => [id];
+}
