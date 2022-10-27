@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -23,4 +25,31 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       emit(state.copyWith(message: e.toString(), status: HomeStatus.failure));
     }
   }
+
+  @override
+  void onTransition(Transition<HomeEvent, HomeState> transition) {
+    super.onTransition(transition);
+    log(transition.toString());
+  }
+
+  @override
+  void onChange(Change<HomeState> change) {
+    super.onChange(change);
+    log(change.toString());
+    log(change.currentState.toString());
+    log(change.nextState.toString());
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    super.onError(error, stackTrace);
+    log(error.toString());
+  }
+
+  @override
+  void onEvent(HomeEvent event) {
+    super.onEvent(event);
+    log(event.toString());
+  }
 }
+
