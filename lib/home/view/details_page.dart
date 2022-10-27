@@ -49,6 +49,7 @@ class DetailsPage extends StatelessWidget {
                           decoration: BoxDecoration(
                               color: Colors.transparent,
                               image: DecorationImage(
+                                  fit: BoxFit.cover,
                                   image: NetworkImage(
                                       '${state.meals?.meals?[index].strMealThumb}'))),
                         )),

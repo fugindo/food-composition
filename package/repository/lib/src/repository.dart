@@ -53,8 +53,8 @@ class FoodRespository implements Exception {
   Future<Meals?> mealsDetails({required int? id}) async {
     try {
       return await _foodApiClient.mealsDetails(id: id);
-    } catch (e) {
-      throw Exception(e.toString());
+    } on Exception catch (error, stackTrace) {
+      throw MealsDetailsException(error, stackTrace);
     }
   }
 }
