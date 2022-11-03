@@ -8,9 +8,9 @@ import 'package:repository/repository.dart';
 void main() {
 
   Bloc.observer = GlobalObserver();
+
   final apiClient = FoodApiClient();
   final foodRepository = FoodRespository(foodApiClient: apiClient);
-
   final app = App(foodRespository: foodRepository);
   runApp(app);
 }

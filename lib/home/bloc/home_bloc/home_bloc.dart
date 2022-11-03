@@ -21,9 +21,21 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     try {
       final listFood = await _foodRespository.listFood();
       emit(HomeState(food: listFood, status: HomeStatus.success));
-    } on Exception catch (e) {
+    } catch (e) {
       emit(state.copyWith(message: e.toString(), status: HomeStatus.failure));
     }
+  }
+
+  @override
+  void onEvent(HomeEvent event) {
+    super.onEvent(event);
+    log(event.toString());
+  }
+
+  @override
+  void onError(Object error, StackTrace stackTrace) {
+    super.onError(error, stackTrace);
+    log(error.toString());
   }
 
   @override
@@ -39,17 +51,4 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     log(change.currentState.toString());
     log(change.nextState.toString());
   }
-
-  @override
-  void onError(Object error, StackTrace stackTrace) {
-    super.onError(error, stackTrace);
-    log(error.toString());
-  }
-
-  @override
-  void onEvent(HomeEvent event) {
-    super.onEvent(event);
-    log(event.toString());
-  }
 }
-

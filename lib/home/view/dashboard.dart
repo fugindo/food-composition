@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:food_composition/home/bloc/home_bloc/home_bloc.dart';
@@ -38,9 +40,15 @@ class DashboardView extends StatelessWidget {
                         assetName: '${state.food?.meals?[index].strMealThumb}'),
                   );
                 });
+          } else if (state.status == HomeStatus.failure) {
+            return Container(
+              color: Colors.transparent,
+              child: Center(
+                child: Text(state.message!),
+              ),
+            );
           } else {
-            return ScaffoldMessenger(
-                child: SnackBar(content: Text(state.message!)));
+            return Container();
           }
         },
       ),
